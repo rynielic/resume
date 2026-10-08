@@ -11,7 +11,7 @@
     <aside class="sidebar">
       <div class="profile">
         <!-- Optional: <img src="photo.jpg" alt="Фото" class="avatar"> -->
-        <h1 class="name">Мартынов<br>Даниил Владимирович</h1>
+        <h1 class="name">Мартынов<br>Даниил Вячеславович</h1>
         <p class="role">Embedded Systems Engineer (Rust / C)</p>
       </div>
 
@@ -23,10 +23,11 @@
         <div class="section-title">Контакты</div>
         <p><strong>Город:</strong> г. Москва</p>
         <p><strong>Занятость:</strong> частичная / стажировка</p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/YOUR_USERNAME" target="_blank">github.com/YOUR_USERNAME</a></p>
-        <p><strong>Telegram:</strong> <a href="https://t.me/YOUR_HANDLE" target="_blank">@YOUR_HANDLE</a></p>
-        <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/rynielic" target="_blank">github.com/rynielic</a></p>
+        <p><strong>Telegram:</strong> <a href="https://t.me/gyniael1ccc" target="_blank">@YOUR_HANDLE</a></p>
+        <p><strong>Email:</strong> <a href="mailto:martinovdaniil2007@gmail.com">martinovdaniil2007@gmail.com</a></p>
       </div>
+      <button class="pdf-btn" onclick="window.print()">Скачать PDF</button>
     </aside>
 
     <main class="content">
@@ -35,7 +36,7 @@
         <div class="item">
           <div class="item-header">РТУ МИРЭА, г. Москва</div>
           <div class="item-sub">Киберфизические системы · 2025 - 2029 · Очная (2 курс)</div>
-          <p class="item-desc">Направление: Информатика и вычислительная техника / Киберфизические системы и IoT.</p>
+          <p class="item-desc">Направление: Информатика и вычислительная техника / Киберфизические системы.</p>
         </div>
       </section>
 
@@ -51,8 +52,10 @@
           <span>I2C</span>
           <span>SPI</span>
           <span>1-Wire</span>
+          <span>CRC</span>
           <span>PWM / Timers</span>
           <span>GPIO / EXTI</span>
+          <span>NVIC</span>
         </div>
 
         <p class="skill-category">Языки и фреймворки:</p>
@@ -62,20 +65,20 @@
           <span>PAC / Raw Registers</span>
           <span>C / C++</span>
           <span>Python</span>
-          <span>Java</span>
-          <span>HTML / CSS / JS</span>
         </div>
 
         <p class="skill-category">Инструменты и среда:</p>
         <div class="tags">
-          <span>Linux (Mint)</span>
+          <span>Linux</span>
           <span>Git / GitLab</span>
           <span>OpenOCD</span>
           <span>GDB (arm-none-eabi)</span>
           <span>probe-rs</span>
+          <span>STM32CubeIDE/MX/PRG</span>
           <span>Cortex-Debug</span>
           <span>KiCad</span>
           <span>Пайка и монтаж</span>
+          <span>КОМПАС-3D</span>
         </div>
       </section>
 
@@ -83,16 +86,24 @@
         <h2 class="section-title">Проекты и опыт</h2>
 
         <div class="item">
-          <div class="item-header">Асинхронный парсер протокола по UART с использованием DMA</div>
-          <div class="item-sub">Пет-проект · STM32F303 · Rust · 2026 · <a href="#">Код на GitHub</a></div>
+          <div class="item-header">Асинхронный парсер бинарного протокола по UART с использованием DMA</div>
+          <div class="item-sub">Пет-проект (Firmware) · STM32F303 · Rust (no_std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/firmware" target="_blank">GitHub</a></div>
           <p class="item-desc">
-            Реализовал неблокирующий прием пакетов переменной длины на уровне регистров (PAC) без оверхеда HAL. Настроил кольцевой буфер DMA (Circular mode) в связке с прерываниями по простою линии (USART IDLE line interrupt). Исключил потерю байтов при высокой частоте потока данных.
+            Реализовал неблокирующий прием пакетов переменной длины на уровне регистров (PAC) без оверхеда HAL. Настроил кольцевой буфер DMA (Circular mode) в связке с прерываниями по простою линии (USART IDLE). Внедрил аппаратную проверку целостности пакетов через встроенный периферийный модуль <code>CRC</code> и перевел ядро в режим сна (инструкция <code>WFI</code>) на время фоновой пересылки данных.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-header">Отказоустойчивая многопоточная CLI-утилита телеметрии Serial/UART</div>
+          <div class="item-sub">Инструментарий (Host) · Linux / PC · Rust (std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/serial_host" target="_blank">GitHub</a></div>
+          <p class="item-desc">
+            Разработал десктопную утилиту для обмена данными с МК. Реализовал двухпоточную архитектуру (разделение I/O и обработки) с синхронизацией через атомарные примитивы (<code>Atomics</code>). Внедрил интерактивный выбор порта, программный побитовый расчет CRC (синхронизированный с аппаратным блоком STM32) и автоматическое переподключение (auto-reconnect) при обрыве связи без падения программы.
           </p>
         </div>
 
         <div class="item">
           <div class="item-header">Система контроля температуры с ПИД-регулятором</div>
-          <div class="item-sub">Курсовой проект · STM32F3DISCOVERY · Rust · 2026 · <a href="#">Код и схема</a></div>
+          <div class="item-sub">Курсовой проект · STM32F3DISCOVERY · Rust · 2026 · <a href="https://github.com/rynielic/stm32f3-pid-thermostat">GitHub</a></div>
           <p class="item-desc">
             Разработал замкнутую систему терморегуляции на базе микроконтроллера STM32F303. Реализовал опрос датчика DS18B20 по протоколу 1-Wire, вывод телеметрии в реальном времени на OLED-дисплей SSD1306 (I2C) и логирование данных на ПК по UART. Написал алгоритм ПИД-регулятора для управления нагревательным элементом. Спроектировал электрическую принципиальную схему в KiCad.
           </p>
@@ -102,7 +113,13 @@
       <section class="block">
         <h2 class="section-title">Дополнительно</h2>
         <p class="item-desc">
-          Читаю документацию и даташиты на английском языке (уровень B2). Имею навыки ручной пайки выводных и SMD-компонентов, работы с мультиметром и отладки на железе через аппаратные программаторы ST-LINK.
+          <strong>Архитектура прошивок:</strong> разработка событийно-ориентированного неблокирующего кода на базе аппаратных прерываний (NVIC), таймеров и DMA. Снижение энергопотребления и разгрузка ядра через перевод МК в режим ожидания прерываний (<code>WFI</code> / Sleep mode). Строгий контроль памяти без использования кучи (static allocation) и безопасная синхронизация в реальном времени (RTIC).
+        </p>
+        <p class="item-desc" style="margin-top: 0.6rem;">
+          <strong>Аппаратная и программная отладка:</strong> пошаговая отладка на железе через интерфейс SWD (ST-LINK, OpenOCD + GDB, probe-rs, логирование по RTT). Написание сопутствующих скриптов на Python для сбора и анализа телеметрии с ПК (PySerial). Поиск аппаратных неисправностей, прозвонка цепей и проверка уровней сигналов мультиметром, ручной монтаж макетных плат.
+        </p>
+        <p class="item-desc" style="margin-top: 0.6rem;">
+          <strong>Документация и стандарты:</strong> свободное чтение технической документации на английском языке (Datasheets, Reference Manuals, Errata, уровень B2). Опыт разработки и оформления конструкторской и программной документации по ГОСТ (ЕСКД / ЕСПД): схемы электрические принципиальные, перечни элементов, пояснительные записки и ТЗ.
         </p>
       </section>
     </main>
