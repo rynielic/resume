@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мартынов Даниил - Embedded Rust / MCU Engineer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <!-- Optional: <img src="photo.jpg" alt="Фото" class="avatar"> -->
+        <h1 class="name">Мартынов<br>Даниил Владимирович</h1>
+        <p class="role">Embedded Systems Engineer (Rust / C)</p>
+      </div>
+
+      <div class="summary">
+        Разрабатываю прошивки для микроконтроллеров (bare-metal, RTOS) с упором на надежность и безопасность памяти на языке Rust. Проектирую принципиальные схемы, работаю с периферией на уровне регистров (PAC) и HAL.
+      </div>
+
+      <div class="contacts">
+        <div class="section-title">Контакты</div>
+        <p><strong>Город:</strong> г. Москва</p>
+        <p><strong>Занятость:</strong> частичная / стажировка</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/YOUR_USERNAME" target="_blank">github.com/YOUR_USERNAME</a></p>
+        <p><strong>Telegram:</strong> <a href="https://t.me/YOUR_HANDLE" target="_blank">@YOUR_HANDLE</a></p>
+        <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="block">
+        <h2 class="section-title">Образование</h2>
+        <div class="item">
+          <div class="item-header">РТУ МИРЭА, г. Москва</div>
+          <div class="item-sub">Киберфизические системы · 2025 - 2029 · Очная (2 курс)</div>
+          <p class="item-desc">Направление: Информатика и вычислительная техника / Киберфизические системы и IoT.</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Навыки и стек</h2>
+        
+        <p class="skill-category">Микроконтроллеры и периферия:</p>
+        <div class="tags">
+          <span>STM32 (F1, F3)</span>
+          <span>ARM Cortex-M</span>
+          <span>DMA (Circular)</span>
+          <span>UART / USART</span>
+          <span>I2C</span>
+          <span>SPI</span>
+          <span>1-Wire</span>
+          <span>PWM / Timers</span>
+          <span>GPIO / EXTI</span>
+        </div>
+
+        <p class="skill-category">Языки и фреймворки:</p>
+        <div class="tags">
+          <span>Rust (no_std, embedded-hal)</span>
+          <span>RTIC</span>
+          <span>PAC / Raw Registers</span>
+          <span>C / C++</span>
+          <span>Python</span>
+          <span>Java</span>
+          <span>HTML / CSS / JS</span>
+        </div>
+
+        <p class="skill-category">Инструменты и среда:</p>
+        <div class="tags">
+          <span>Linux (Mint)</span>
+          <span>Git / GitLab</span>
+          <span>OpenOCD</span>
+          <span>GDB (arm-none-eabi)</span>
+          <span>probe-rs</span>
+          <span>Cortex-Debug</span>
+          <span>KiCad</span>
+          <span>Пайка и монтаж</span>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Проекты и опыт</h2>
+
+        <div class="item">
+          <div class="item-header">Асинхронный парсер протокола по UART с использованием DMA</div>
+          <div class="item-sub">Пет-проект · STM32F303 · Rust · 2026 · <a href="#">Код на GitHub</a></div>
+          <p class="item-desc">
+            Реализовал неблокирующий прием пакетов переменной длины на уровне регистров (PAC) без оверхеда HAL. Настроил кольцевой буфер DMA (Circular mode) в связке с прерываниями по простою линии (USART IDLE line interrupt). Исключил потерю байтов при высокой частоте потока данных.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-header">Система контроля температуры с ПИД-регулятором</div>
+          <div class="item-sub">Курсовой проект · STM32F3DISCOVERY · Rust · 2026 · <a href="#">Код и схема</a></div>
+          <p class="item-desc">
+            Разработал замкнутую систему терморегуляции на базе микроконтроллера STM32F303. Реализовал опрос датчика DS18B20 по протоколу 1-Wire, вывод телеметрии в реальном времени на OLED-дисплей SSD1306 (I2C) и логирование данных на ПК по UART. Написал алгоритм ПИД-регулятора для управления нагревательным элементом. Спроектировал электрическую принципиальную схему в KiCad.
+          </p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Дополнительно</h2>
+        <p class="item-desc">
+          Читаю документацию и даташиты на английском языке (уровень B2). Имею навыки ручной пайки выводных и SMD-компонентов, работы с мультиметром и отладки на железе через аппаратные программаторы ST-LINK.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
