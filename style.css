@@ -22,6 +22,17 @@ body {
   padding: 2rem 1rem;
 }
 
+/* Profile Photo */
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* Crops the photo into a perfect circle */
+  object-fit: cover;  /* Prevents stretching if the original is not a square */
+  margin-bottom: 1rem;
+  border: 1px solid var(--border); /* Optional: adds a subtle ring around it */
+  display: block;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
