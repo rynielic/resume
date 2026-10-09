@@ -25,7 +25,7 @@
         <p><strong>Занятость:</strong> частичная / стажировка</p>
         <p><strong>GitHub:</strong> <a href="https://github.com/rynielic" target="_blank">github.com/rynielic</a></p>
         <p><strong>Telegram:</strong> <a href="https://t.me/gyniael1ccc" target="_blank">@gyniael1ccc</a></p>
-        <p><strong>Email:</strong> <a href="mailto:martinovdaniil2007@gmail.com">rynielic@gmail.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:rynielic@gmail.com">rynielic@gmail.com</a></p>
         <p class="no-print" style="margin-top: 0.8rem;">
           <strong>Версия для печати:</strong> <a href="print.pdf" download>Скачать PDF</a>
         </p>
@@ -52,12 +52,10 @@
           <span>DMA (Circular)</span>
           <span>UART / USART</span>
           <span>I2C</span>
-          <span>SPI</span>
           <span>1-Wire</span>
           <span>CRC</span>
           <span>PWM / Timers</span>
           <span>GPIO / EXTI</span>
-          <span>NVIC</span>
         </div>
 
         <p class="skill-category">Языки и фреймворки:</p>
@@ -72,10 +70,11 @@
         <p class="skill-category">Инструменты и среда:</p>
         <div class="tags">
           <span>Linux</span>
-          <span>Git / GitLab</span>
+          <span>Git</span>
           <span>OpenOCD</span>
           <span>GDB (arm-none-eabi)</span>
           <span>probe-rs</span>
+          <span>Unit-тесты</span>
           <span>STM32CubeIDE/MX/PRG</span>
           <span>Cortex-Debug</span>
           <span>KiCad</span>
@@ -91,7 +90,7 @@
           <div class="item-header">Асинхронный парсер бинарного протокола по UART с использованием DMA</div>
           <div class="item-sub">Пет-проект (Firmware) · STM32F303 · Rust (no_std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/firmware" target="_blank">GitHub</a></div>
           <p class="item-desc">
-            Реализовал неблокирующий прием пакетов переменной длины на уровне регистров (PAC) без оверхеда HAL. Настроил кольцевой буфер DMA (Circular mode) в связке с прерываниями по простою линии (USART IDLE). Внедрил аппаратную проверку целостности пакетов через встроенный периферийный модуль <code>CRC</code> и перевел ядро в режим сна (<code>WFI</code>) на время фоновой пересылки данных.
+            Неблокирующий UART-интерфейс управления нагревателем (RTIC, STM32F303) с приёмом команд переменной длины: кольцевой DMA + прерывание USART IDLE, число принятых байт считается по счётчику DMA. Аппаратный ШИМ на TIM3, CRC-16 команд через периферию CRC, аварийный останов по EXTI0 и по команде STOP с явным RESUME. В idle ядро засыпает (WFI) и просыпается по прерыванию; приём данных по DMA и ШИМ на TIM3 продолжают работать, пока ядро спит. Регистры (PAC) использованы там, где HAL не покрывает задачу. Unit-тесты разбора команд; силовой каскад на MOSFET IRLB8721 спроектирован и спаян.
           </p>
         </div>
 
@@ -99,7 +98,7 @@
           <div class="item-header">Отказоустойчивая многопоточная CLI-утилита телеметрии Serial/UART</div>
           <div class="item-sub">Инструментарий (Host) · Linux / PC · Rust (std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/serial_host" target="_blank">GitHub</a></div>
           <p class="item-desc">
-            Разработал десктопную утилиту для обмена данными с МК. Реализовал двухпоточную архитектуру (разделение I/O и обработки) с синхронизацией через атомарные примитивы (<code>Atomics</code>). Внедрил интерактивный выбор порта, программный побитовый расчет CRC (синхронизированный с аппаратным блоком STM32) и автоматическое переподключение (auto-reconnect) при обрыве связи без падения программы.
+            Консольная утилита (Rust, std) для работы с МК по UART: выбор порта, два потока (чтение и запись), флаг отмены на AtomicBool, CRC-16/CCITT-FALSE, совпадающий с аппаратным CRC STM32, повторный выбор порта после ошибки записи.
           </p>
         </div>
 
@@ -107,7 +106,7 @@
           <div class="item-header">Система контроля температуры с ПИД-регулятором</div>
           <div class="item-sub">Курсовой проект · STM32F3DISCOVERY · Rust · 2026 · <a href="https://github.com/rynielic/stm32f3-pid-thermostat">GitHub</a></div>
           <p class="item-desc">
-            Разработал замкнутую систему терморегуляции на базе микроконтроллера STM32F303. Реализовал опрос датчика DS18B20 по протоколу 1-Wire, вывод телеметрии в реальном времени на OLED-дисплей SSD1306 (I2C) и логирование данных на ПК по UART. Написал алгоритм ПИД-регулятора для управления нагревательным элементом. Спроектировал электрическую принципиальную схему в KiCad.
+            Замкнутая система термостабилизации (200 мл воды, цель ±1 °C): 1-Wire реализован программно (bit-banging) с проверкой CRC-8, ПИД-регулятор с полной мощностью при большой ошибке, пропорциональное по времени управление реле нагревателя 12 В / 50 Вт, телеметрия на OLED (I2C) и по UART, настройка коэффициентов командами. Схема в KiCad.
           </p>
         </div>
       </section>
