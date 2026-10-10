@@ -67,9 +67,8 @@ body {
   font-size: 0.95rem;
 }
 
-.summary {
+.summary, summary p {
   font-size: 0.9rem;
-  color: var(--text-muted);
 }
 
 .contacts p {
