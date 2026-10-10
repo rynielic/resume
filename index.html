@@ -88,7 +88,7 @@
 
         <div class="item">
           <div class="item-header">Асинхронный UART-парсер (DMA, CRC16) для аппаратного PWM-управления силовой нагрузкой</div>
-          <div class="item-sub">Пет-проект (Firmware) · STM32F3DISCOVERY · Rust (no_std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/firmware" target="_blank">GitHub</a></div>
+          <div class="item-sub">Пет-проект (Firmware) · STM32F3DISCOVERY · Rust (no_std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser" target="_blank">GitHub</a></div>
           <p class="item-desc">
             Реализован неблокирующий прием команд переменной длины через кольцевой буфер DMA и прерывание USART IDLE. число принятых байт вычисляется через аппаратный счетчик DMA. Протокол команд защищен вычислением CRC-16 аппаратным модулем. Нагрузка управляется через аппаратный ШИМ на TIM3. Настроена система аварийной остановки по аппаратному прерыванию EXTI0 и команде STOP с явным RESUME. В цикле простоя ядро переводится в режим ожидания (WFI) для экономии энергии и просыпается по прерыванию, при этом прием данных и генерация ШИМ функционируют аппаратно. Управление периферией реализовано через прямой доступ к регистрам (PAC) из-за архитектурных ограничений HAL. Разработаны unit-тесты логики парсера. Спроектирована схема и выполнен монтаж пайкой силового каскада на MOSFET IRLB8721
           </p>
@@ -96,7 +96,7 @@
 
         <div class="item">
           <div class="item-header">Отказоустойчивая многопоточная CLI-утилита телеметрии Serial/UART</div>
-          <div class="item-sub">Инструментарий (Host) · Linux / Windows · Rust (std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/serial_host" target="_blank">GitHub</a></div>
+          <div class="item-sub">Инструментарий (Serial_host) · Linux / Windows · Rust (std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/serial_host" target="_blank">GitHub</a></div>
           <p class="item-desc">
             Разработан нативный хост-клиент (Linux/Windows) для двустороннего взаимодействия с микроконтроллером. Реализована параллельная архитектура: независимые потоки чтения и записи с безопасной синхронизацией состояний через примитивы <code>AtomicBool</code>. Интегрирован программный расчет контрольной суммы CRC-16, идентичный аппаратному блоку STM32, для предварительной валидации пакетов на стороне ПК. Настроена отказоустойчивая обработка I/O-ошибок (например, при физическом обрыве связи) с функцией горячего переподключения (hot-plug) COM-порта без перезапуска утилиты.
           </p>
