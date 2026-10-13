@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniil Martynov - Embedded Rust / MCU Engineer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="photo.jpg" alt="Photo" class="avatar">
+        <h1 class="name">Daniil<br>Martynov</h1>
+        <p class="role">Embedded Systems Engineer (Rust / C)</p>
+      </div>
+
+      <div class="summary">
+        Developing bare-metal microcontroller firmware in Rust (RTIC) with a strong focus on reliability and memory safety. Designing MCU peripheral schematics in KiCad. Proficient in direct register manipulation and low-level peripheral configuration regardless of the software stack. Currently expanding my toolkit with C (HAL / LL) to align with industry standards.
+      </div>
+
+      <div class="contacts">
+        <div class="section-title">Contacts</div>
+        <p><strong>Location:</strong> Moscow</p>
+        <p><strong>Employment:</strong> Part-time / Internship</p>
+        <p><strong>Phone:</strong> +7 (915) 789-34-68</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/rynielic" target="_blank">github.com/rynielic</a></p>
+        <p><strong>Telegram:</strong> <a href="https://t.me/gyniael1ccc" target="_blank">@gyniael1ccc</a></p>
+        <p><strong>Email:</strong> <a href="mailto:rynielic@gmail.com">rynielic@gmail.com</a></p>
+        <p class="no-print" style="margin-top: 0.8rem;">
+          <strong>Print version:</strong> <a href="CV_Martynov_Daniil_EN.pdf" download>Download PDF</a>
+        </p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="block">
+        <h2 class="section-title">Education</h2>
+        <div class="item">
+          <div class="item-header">RTU MIREA, Moscow</div>
+          <div class="item-sub">Cyber-Physical Systems · 2025 - 2029 · Full-time (2nd Year B.Sc.)</div>
+          <p class="item-desc">Major: Computer Science and Engineering / Cyber-Physical Systems.</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Skills & Stack</h2>
+        
+        <p class="skill-category">Microcontrollers & Peripherals:</p>
+        <div class="tags">
+          <span>STM32</span>
+          <span>ARM Cortex-M</span>
+          <span>DMA (Circular)</span>
+          <span>UART / USART</span>
+          <span>I2C</span>
+          <span>1-Wire</span>
+          <span>CRC</span>
+          <span>PWM / Timers</span>
+          <span>GPIO / EXTI</span>
+        </div>
+
+        <p class="skill-category">Languages & Frameworks:</p>
+        <div class="tags">
+          <span>Rust</span>
+          <span>RTIC</span>
+          <span>PAC / Raw Registers</span>
+          <span>C / C++</span>
+          <span>Python</span>
+        </div>
+
+        <p class="skill-category">Tools & Environment:</p>
+        <div class="tags">
+          <span>Linux</span>
+          <span>Git</span>
+          <span>OpenOCD</span>
+          <span>GDB (arm-none-eabi)</span>
+          <span>probe-rs</span>
+          <span>Unit Testing</span>
+          <span>STM32Cube</span>
+          <span>Cortex-Debug</span>
+          <span>KiCad</span>
+          <span>Soldering & Prototyping</span>
+          <span>KOMPAS-3D (CAD)</span>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Projects & Experience</h2>
+
+        <div class="item">
+          <div class="item-header">Non-Blocking UART Parser (DMA, CRC16) for Hardware PWM Power Control</div>
+          <div class="item-sub">Pet Project (Firmware) · STM32F3DISCOVERY · Rust (no_std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser" target="_blank">GitHub</a></div>
+          <p class="item-desc">
+            Implemented non-blocking variable-length command reception via a circular DMA buffer and USART IDLE interrupt, calculating received byte counts using the hardware DMA counter. Secured the command protocol with hardware CRC-16 validation. Controlled the power load via hardware PWM on TIM3. Configured an emergency stop system triggered by a hardware EXTI0 interrupt and a STOP command with explicit RESUME recovery. Placed the core into sleep mode (WFI) during the idle loop to save power while maintaining hardware-driven data reception and PWM generation. Implemented direct register access (PAC) to bypass HAL architectural limitations. Wrote unit tests for the parser logic. Designed the schematic and soldered a low-side MOSFET (IRLB8721) power switching stage.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-header">Fault-Tolerant Multithreaded Serial/UART Telemetry CLI Tool</div>
+          <div class="item-sub">Tooling (serial_host) · Linux / Windows · Rust (std) · 2026 · <a href="https://github.com/rynielic/rtic-non-blocking-uart-parser/tree/main/serial_host" target="_blank">GitHub</a></div>
+          <p class="item-desc">
+            Developed a native host client (Linux/Windows) for bidirectional microcontroller communication. Built a concurrent architecture featuring independent read and write threads with safe state synchronization via <code>AtomicBool</code> primitives. Integrated software CRC-16 calculation matching the STM32 hardware unit for host-side packet pre-validation. Implemented fault-tolerant I/O error handling (such as physical link disconnection) with automatic serial port hot-plug reconnection without restarting the utility.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-header">PID Temperature Control System</div>
+          <div class="item-sub">Coursework Project · STM32F3DISCOVERY · Rust · 2026 · <a href="https://github.com/rynielic/stm32f3-pid-thermostat">GitHub</a></div>
+          <p class="item-desc">
+            Developed a closed-loop liquid temperature control system based on an STM32 microcontroller. Implemented a bit-banged 1-Wire interface to poll a DS18B20 sensor with CRC-8 packet validation. Combined a mathematical PID controller with a bang-bang mode for rapid heating during large temperature errors. Regulated heater power (12V, 50W) using time-proportional control via an electromechanical relay. Enabled live tuning of PID gains and setpoints via UART commands without halting system operation. Implemented telemetry output to an OLED display (I2C) and serial terminal. Designed the circuit schematic in KiCad.
+          </p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="section-title">Additional Information</h2>
+        <p class="item-desc">
+          <strong>Firmware Architecture:</strong> Developing event-driven, non-blocking code based on hardware interrupts (NVIC), timers, and DMA. Reducing power consumption and CPU load by placing the MCU into sleep mode (<code>WFI</code>). Enforcing strict memory control without heap allocation (static allocation) and safe real-time concurrency (RTIC).
+        </p>
+        <p class="item-desc" style="margin-top: 0.6rem;">
+          <strong>Hardware & Software Debugging:</strong> On-target step-by-step debugging via SWD (ST-LINK, OpenOCD + GDB, probe-rs, RTT logging). Writing companion Python scripts for PC-side telemetry collection and analysis (PySerial). Hardware troubleshooting, continuity testing, signal level verification with a multimeter, and manual perfboard assembly.
+        </p>
+        <p class="item-desc" style="margin-top: 0.6rem;">
+          <strong>Documentation & Standards:</strong> Proficient in reading technical documentation in English (Datasheets, Reference Manuals, Errata, B2 level). Experienced in preparing hardware and software engineering documentation: circuit schematics, Bills of Materials (BOM), explanatory notes, and technical specifications.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
